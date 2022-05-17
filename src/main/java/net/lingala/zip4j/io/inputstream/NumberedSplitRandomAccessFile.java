@@ -119,6 +119,14 @@ public class NumberedSplitRandomAccessFile extends RandomAccessFile {
     return randomAccessFile.length();
   }
 
+  @Override
+  public void close() throws IOException {
+    if (null != randomAccessFile) {
+      randomAccessFile.close();
+    }
+    super.close();
+  }
+
   public void seekInCurrentPart(long pos) throws IOException {
     randomAccessFile.seek(pos);
   }
